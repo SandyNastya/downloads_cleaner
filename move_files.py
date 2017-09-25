@@ -3,9 +3,15 @@ import os
 import shutil
 from os.path import isfile, join
 
-def starting():
+folders_name = ["installers", "images", "documents", "music", "archives", "video", "others"]
+
+
+def get_folder_names():
+    return folders_name
+
+def starting(folders_name):
     path = os.path.expanduser('~/Downloads')
-    folders_name = ["installers", "images", "documents", "music", "archives", "video", "others"]
+    #folders_name = ["installers", "images", "documents", "music", "archives", "video", "others"]
 
     def create_folders(path, folders_name):
         for name in folders_name:
@@ -48,7 +54,7 @@ def starting():
 
     create_folders(path, folders_name)
     move_files(path)
+    print('Folders created')
     return
 
 
-starting()
