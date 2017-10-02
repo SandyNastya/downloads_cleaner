@@ -11,16 +11,19 @@ def get_folder_names():
 def create_folders(path, folders_name):
     for name in folders_name:
         os.chdir(path)
-        print("Do you need '%s' folder?(yes or no)" % name)
-        answer = input()
-        if (answer == "yes"):
-            if (os.path.isdir(os.path.expanduser('~/Downloads/%s' % name))):
-                continue
+        while True:
+            print("Do you need '%s' folder?(yes or no)" % name)
+            answer = input().lower()
+            if answer == "yes":
+                if (os.path.isdir(os.path.expanduser('~/Downloads/%s' % name))):
+                    return
+                else:
+                    os.mkdir(name)
+            elif answer == "no":
+                folders_name.remove(name)
+                return
             else:
-                os.mkdir(name)
-        elif (answer == "no"):
-            folders_name.remove(name)
-            continue
+                continue
     return
 
 def move_files(path):
