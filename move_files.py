@@ -11,17 +11,19 @@ def get_folder_names():
 def create_folders(path, folders_name):
     for name in folders_name:
         os.chdir(path)
-        while True:
+        flag = True
+        while flag:
             print("Do you need '%s' folder?(yes or no)" % name)
             answer = input().lower()
             if answer == "yes":
-                if (os.path.isdir(os.path.expanduser('~/Downloads/%s' % name))):
-                    return
+                if (os.path.isdir(os.path.expanduser('~/Downloads/%s' % name))):#проверка на существование такой папки
+                    flag = False
                 else:
                     os.mkdir(name)
+                    flag = False
             elif answer == "no":
                 folders_name.remove(name)
-                return
+                flag = False
             else:
                 continue
     return
@@ -53,7 +55,7 @@ def starting(folders_name):
     path = os.path.expanduser('~/Downloads')
     create_folders(path, folders_name)
     move_files(path)
-    print('Folders created')
+    print('Folders created, files moved.')
     return
 
-
+starting(folders_name)
