@@ -72,7 +72,7 @@ while True:
         time.sleep(1)
         break
     if cmd == str(1):
-        move_files.starting()
+        move_files.starting(move_files.get_folder_names())
     if cmd == str(2):
         print('Choose directory (type in . or Downloads to stay in current directory)')
         directory_name = input()

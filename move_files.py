@@ -16,16 +16,14 @@ def create_folders(path, folders_name):
             print("Do you need '%s' folder?(yes or no)" % name)
             answer = input().lower()
             if answer == "yes":
-                if (os.path.isdir(os.path.expanduser('~/Downloads/%s' % name))):#проверка на существование такой папки
-                    flag = False
+                flag = False
+                if (os.path.exists(os.path.expanduser('~/Downloads/%s' % name))):#проверка на существование такой папки
+                     continue
                 else:
                     os.mkdir(name)
-                    flag = False
             elif answer == "no":
                 folders_name.remove(name)
                 flag = False
-            else:
-                continue
     return
 
 def move_files(path):
@@ -57,5 +55,3 @@ def starting(folders_name):
     move_files(path)
     print('Folders created, files moved.')
     return
-
-starting(folders_name)
