@@ -20,7 +20,6 @@ def are_you_sure_check():
             return False
 
 
-# TODO decorator instead of are_you_sure_check()
 
 def delete_folders_in_a_folder(path=os.path.join(os.path.expanduser('~'), 'Downloads')):
     print('Are you sure you want to delete all folders from ', str(path))
