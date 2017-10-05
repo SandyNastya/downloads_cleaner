@@ -6,15 +6,15 @@ import shutil
 import move_files
 import time
 
-yes_list = ['y', 'Y', 'yes', 'Yes', 'YES']
-exit_list = ['exit', 'EXIT', 'Exit', 'shutdown', 'sudo kill', 'kill', 'suicide']
-downloads_folder_names_list = ['Downloads', 'downloads', '.']
+yes_list = ['y', 'yes']
+exit_list = ['exit', 'shutdown', 'sudo kill', 'kill', 'fiasco']
+downloads_folder_names_list = ['downloads', '.']
 downloads_folder_path = join(os.path.expanduser('~'), 'Downloads')
 
 
 def are_you_sure_check():
     while True:
-        if input() in yes_list:
+        if input().lower() in yes_list:
             return True
         else:
             return False
@@ -65,7 +65,7 @@ while True:
     print('1 - put files into folders (recommended to be done before deleting)')
     print('2 - delete files')
     print('If you want to exit type in \'exit\' or \'suicide\'')
-    cmd = input()
+    cmd = input().lower()
     if cmd in exit_list:
         print('See you next time')
         time.sleep(1)
@@ -74,7 +74,7 @@ while True:
         move_files.starting(move_files.get_folder_names())
     if cmd == str(2):
         print('Choose directory (type in . or Downloads to stay in current directory)')
-        directory_name = input()
+        directory_name = input().lower()
         if directory_name not in downloads_folder_names_list:
             current_path = os.path.join(downloads_folder_path,directory_name)
         else:
