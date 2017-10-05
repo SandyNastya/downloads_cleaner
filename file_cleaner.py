@@ -64,7 +64,7 @@ while True:
     print('Choose what would you like to do:')
     print('1 - put files into folders (recommended to be done before deleting)')
     print('2 - delete files')
-    print('If you want to exit type in \'exit\' or \'suicide\'')
+    print('If you want to exit type in \'exit\' or \'fiasco\'')
     cmd = input().lower()
     if cmd in exit_list:
         print('See you next time')
